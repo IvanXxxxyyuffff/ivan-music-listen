@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<meta name="referrer" content="no-referrer" />
+<title>Ivan Music · 听歌</title>
+<link rel="stylesheet" href="style.css" />
+<!-- 取流节点预热：首字节越早，点开越像“直接出声” -->
+<link rel="preconnect" href="https://api.moeyao.cn" crossorigin />
+<link rel="preconnect" href="https://api.injahow.cn" crossorigin />
+<link rel="preconnect" href="https://music-api.gdstudio.xyz" crossorigin />
+</head>
+<body>
+<div class="glow" id="glow" aria-hidden="true"></div>
+
+<main class="card">
+  <div class="art">
+    <img id="cover" alt="" hidden />
+    <div class="tile" id="tile" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18V5l12-2v13" />
+        <circle cx="6" cy="18" r="3" />
+        <circle cx="18" cy="16" r="3" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="meta">
+    <h1 class="title" id="title">Ivan Music 分享</h1>
+    <p class="artist" id="artist">正在读取链接…</p>
+    <span class="chip" id="chip" hidden></span>
+  </div>
+
+  <div class="stage">
+    <div class="progress" id="progress" role="slider" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+      <div class="bar" id="bar"></div>
+    </div>
+    <div class="times">
+      <span id="cur">0:00</span>
+      <span id="dur">--:--</span>
+    </div>
+  </div>
+
+  <button class="play" id="play" type="button" data-state="paused" aria-label="播放">
+    <svg class="i-play" viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true">
+      <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z" />
+    </svg>
+    <svg class="i-pause" viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true">
+      <rect x="7" y="5" width="3.6" height="14" rx="1.2" />
+      <rect x="13.4" y="5" width="3.6" height="14" rx="1.2" />
+    </svg>
+    <svg class="i-load" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="8" stroke-opacity="0.25" />
+      <path d="M20 12a8 8 0 0 0-8-8" />
+    </svg>
+  </button>
+
+  <p class="status" id="status">正在解析链接…</p>
+  <p class="hint" id="hint"></p>
+</main>
+
+<audio id="audio" preload="metadata" playsinline></audio>
+<script src="app.js"></script>
+</body>
+</html>
